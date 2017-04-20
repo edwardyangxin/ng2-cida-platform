@@ -1,0 +1,436 @@
+
+/*application*/
+
+.application{
+    /*width: 100%;*/
+    margin-top: 20px;
+    min-height: 750px;
+    padding: 0 40px;
+    margin: 0 auto;
+}
+.application_left{
+    float: left;
+    width: 14.1%;
+     min-height: 750px;
+    background-image: url(app/portal/assets/img/leftbj_03.png);
+    background-repeat: repeat-x;
+    border-radius: 10px;
+}
+.rdo{
+     height: 40px;
+      margin-top: 10px;
+}
+
+.rdo .radio-left{
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.rdo .radio-right{
+    float: right;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+.application_left .radio span{
+    font-weight: normal;
+}
+.application_left .checkbox{
+    clear: both;
+    font-weight: normal;
+      margin-left: 75px;
+  margin-top: 0px;
+}
+
+
+.radio {
+  display: inline-block;
+  vertical-align: top;
+}
+.radio input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+input {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px #d9d9d9 solid;
+  height: 30px;
+  padding: 0 10px;
+  color: #3a3e55;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.radio > span {
+  padding-left: 21px;
+  line-height: 16px;
+  position: relative;
+}
+.radio input:checked + span:before {
+  position: absolute;
+  top:5px;
+  left: 5px;
+  content: "";
+  width: 6px;
+  height: 6px;
+    background: #4aa476;
+  border-radius: 50%;
+  z-index: 999;
+}
+.radio > span {
+  padding-left: 21px;
+  line-height: 16px;
+  position: relative;
+}
+.radio > span:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 1px #b7b4ac solid;
+  border-radius: 50%;
+  background: white;
+}
+
+/*å¤é€‰æ¡†*/
+.checkbox {
+  display: inline-block;
+  vertical-align: top;
+}
+.checkbox input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.checkbox > span {
+  padding-left: 21px;
+  line-height: 16px;
+  position: relative;
+}
+.checkbox input:checked + span:before {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  content: "";
+  /*width: 16px;
+  height: 16px;*/
+  z-index: 1;
+   /*background: url("../images/icon_checkbox_sel.png") center center no-repeat;*/
+   -webkit-transform: rotate(-45deg);
+   width: 9px;
+   height: 5px;
+   border: 1px solid white;
+    border-top:none;
+   border-right: none;
+}
+.checkbox > span:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 14px;
+  height: 14px;
+    border: 1px solid #b7b4ac;
+  background: #b7b4ac;
+  border: none;
+  border-radius: 3px;
+}
+
+
+
+
+.application_left .list-search{
+    height: 40px;
+      clear: both;
+      margin-top: 40px;
+}
+.list-search span{
+    position: relative;
+    right: -196px;
+    background-size: 100%;
+    top: -23px;
+    width: 20px;
+    height: 22px;
+    /*background: url(app/portal/assets/img/search.png) right center;*/
+}
+.application_left .list-search input{
+      width: 82%;
+  margin-left: 10px;
+  height: 29px;
+}
+
+
+
+
+
+
+.application_right{
+    float: right;
+    overflow: hidden;
+     height: 750px;
+     border-radius: 10px;
+    width: 85%;
+    background-image: url(app/portal/assets/img/rightbj_03.png);
+    background-repeat: repeat-x;
+    /*overflow: scroll;
+      overflow-x: hidden;*/
+}
+.application_right_nav{
+  height: 40px;
+  line-height: 38px;
+  /* padding-top: 10px; */
+  width: 97%;
+  margin: auto;
+  background: white;
+  margin-top: 28px;
+ border-top-left-radius: 8px;
+ border-top-right-radius: 8px;
+}
+.application_right_nav a{
+    float: left;
+      font-weight: bold;
+      list-style: none;
+    margin: 0 20px 0 20px;
+    font-size: 18px;
+color: black;
+}
+.act{
+  border-bottom: 2px solid;
+}
+/*.application_right_nav li:hover{
+    border-bottom: 2px solid;
+}*/
+/*.application_right_nav li:hover{
+    border-bottom: 2px solid #000000;
+}*/
+.application_right_main{
+    background: white;
+    /*border-radius: 8px;*/
+    min-height: 624px;
+    width: 97%;
+    margin: 0 auto;
+      margin-top: -10px;
+
+
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.application_right_main h1{
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+    /*margin-left: 10px;*/
+    background-repeat: no-repeat;
+    background-size: 15px;
+    border-bottom: 1px solid #eae7e1;
+    background-position: left;
+    /*padding-left: 20px;
+    margin-right: 10px;*/
+    margin: 0 20px;
+    clear: both;
+}
+.application_right_main h1 img{
+  width: 15px;
+    vertical-align: middle;
+}
+.application_right_ulone{
+    margin: 0 10px;
+    width: 100%;
+      height: 35px;
+  line-height: 35px;
+}
+.application_right_ulone ul{
+    float: left;
+    /*margin-left: -38px;*/
+}
+.application_right_ulone li{
+    float: left;
+    margin-right: 18px;
+    color: #8b8888;
+      list-style: none;
+}
+.application_right_ulone button{
+    float: right;
+    width:80px;
+      height: 25px;
+  line-height: 25px;
+    color: white;
+    background: #8b2f81;
+    border: none;
+    border-radius: 10px;
+    margin-right: 27px;
+    margin-top: 5px;
+    background-image: url(app/portal/assets/img/button_icon.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+      background-position: 16px 2px;
+  padding-left: 16px;
+}
+.application_right_meau{
+    /*padding: 0 10px;*/
+    width: 100%;
+    overflow: scroll;
+      overflow-x: hidden;
+      height: 750px;
+
+}
+.application_right_meau ul{
+
+    margin-bottom: 5px;
+      width: 99%;
+  margin: auto;
+  /*margin-left: -26px;*/
+}
+.application_right_meau ul h2{
+    height: 35px;
+    line-height: 35px;
+    background: #dfddd9;
+    font-size: 12px;
+    padding-left: 10px;
+}
+.application_right_meau ul h2 img{
+      display: inline-block;
+        width: 10px;
+        float: left;
+        margin-right: 4px;
+        margin-top: 12px;
+}
+.application_right_meau ul h2 span{
+   float: left;
+   font-size: 15px;
+  display: inline-block;
+}
+/*
+.application_right_meau ul li{
+    background: #f7f7f7;
+    height: 25px;
+    padding-left: 10px;
+    line-height: 25px;
+    display: none;
+}*/
+
+
+.shaixue{
+     position: relative;
+  left: 204px;
+  top: -25px;
+  width: 20px;
+}
+
+
+
+
+
+
+/*.infoUl-div{
+    width: 97.2%;
+  min-height: 200px;
+  background: #dfddd9;
+  margin-left: 40px;
+}
+.infoUl-div ul{
+    float: left;
+    width: 50%;
+    min-height: 200px;
+
+}
+.infoUl-div ul li{
+    float: left;
+    list-style: none;
+      padding: 0 130px;
+  height: 40px;
+  line-height: 40px;
+}*/
+.infoUl-div{
+     width: 98.3%;
+  min-height: 200px;
+  margin-left: 15px;
+  border: 1px solid #ececea;
+  margin-top: -20px;
+}
+.infoUl-div td{
+  height: 40px;
+   line-height: 40px;
+border: solid #ececea;border-width: 1px 0 0 1px;
+padding-left: 10px;
+}
+.td-one{
+  background: #f6f6f6;
+  width: 20%;
+    font-weight: bold;
+}
+.td-two{
+  background: #fafafa;
+}
+
+
+
+
+.application-nav{
+  height: 40px;
+  line-height: 40px;
+  margin-left: 40px;
+  margin-bottom: 15px;
+}
+.application-nav-L{
+  float: left;
+}
+.application-nav-L img{
+width: 20px;
+cursor: pointer;
+margin: 10px 10px 0 0;
+}
+.application-nav-R{
+  float: left;
+
+}
+.application-nav-R ul{
+  height: 40px;
+  margin: 0;
+}
+.application-nav-R ul li{
+     float: left;
+  list-style: none;
+  padding: 0px 14px;
+  width: 150px;
+  color: white;
+    background: url(app/portal/assets/img/2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+  .application-nav-R ul li.active{
+    background: url(app/portal/assets/img/2.2.png);
+    background-size: contain;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+   .application-nav-R ul li:first-child{
+    background: url(app/portal/assets/img/1.png);
+    background-size: contain;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+    .application-nav-R ul li:first-child.active{
+    background: url(app/portal/assets/img/1.1.png);
+    background-size: contain;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+    .application-nav-R ul li:last-child{
+    background: url(app/portal/assets/img/3.png);
+    background-size: contain;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+    .application-nav-R ul li:last-child.active{
+    background: url(app/portal/assets/img/3.1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
