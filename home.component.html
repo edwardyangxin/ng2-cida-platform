@@ -1,0 +1,79 @@
+        <!--导航E-->
+<div class="application-nav">
+    <div class="application-nav-L">
+        <img src="app/portal/assets/img/APPLICATIONICON_03.png" alt="" (click)="leftscroll()">
+    </div>
+    <div class="application-nav-R">
+        <ul class="scrollul">
+            <li class="active">RequireMents</li>
+            <li>TestCase</li>
+            <li>Report_App</li>
+            <li>TestCase</li>
+            <li>Report_App</li>
+        </ul>
+    </div>
+</div>
+    <div class="application">
+
+        <div class="application_left">
+            <div class="rdo">
+                <label class="radio radio-left">
+                    <input type="radio" name="aa" (click)="switchTree('1')" checked>
+                    <span>All</span>
+                </label>
+                <label class="radio radio-right">
+                    <input type="radio" name="aa" (click)="switchTree('0')">
+                    <span>Project-associatde version</span>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" checked="">
+                    <span>Display baseline</span>
+                </label>
+            </div>
+
+            <div class="list-search form-group">
+                <input type="text" class="form-control ng-untouched ng-pristine ng-valid">
+                <span class="glyphicon glyphicon-search">
+                </span>
+                <img src="app/portal/assets/img/sel_06.png" alt="" class="shaixue">
+            </div>
+            <div id="caseTree" class="ztree"></div>
+
+        </div>
+
+
+        <div class="application_right" id="hightEntity">
+            <ul class="application_right_nav" >
+
+                <a routerLink="" routerLinkActive="act">Details</a>
+                <a>Search</a>
+                <a>Attachment</a>
+            </ul>
+            <div class="application_right_main">
+                <h1 id="curInfo">{{curProject?.versionName}} <img src="app/portal/assets/img/icon_09.png" alt="">  baseline version:share</h1>
+                <div class="application_right_ulone">
+                    <ul>
+                        <li id="creationTime">Creation Time:2016-11-16 20:33:49</li>
+                        <li id="Author">Author:zhouxingyao WX317837</li>
+                        <li id="modifyTime">Modify Time:2016-12-16 15:47:01</li>
+                        <li id="lastModified">Last Modified:administrator</li>
+                    </ul>
+                    <button>Edit</button>
+                </div>
+                <div class="application_right_meau">
+
+                   <ul id="infoUl">
+                      <h2>
+                          <img src="app/portal/assets/img/icon_03.png" alt="">
+                          <span>basic information</span>
+                      </h2>
+                   </ul>
+                    <table class="infoUl-div" cellpading="0" cellspacing="0">
+                        <tbody id="basicInfoTable">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
