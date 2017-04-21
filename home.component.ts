@@ -1,13 +1,9 @@
-import {Component, OnInit, ViewEncapsulation}                     from '@angular/core';
-import {DomSanitizer}                         from '@angular/platform-browser';
-import {ApiService, commonConfig}             from '../../../frameworks';
-import {TokenService}                         from '../../../frameworks/shared/services/token.service';
-import {ErrorService}                         from "../../../frameworks/shared/services/error.service";
-import {UserService}                          from "../../../frameworks/shared/services/http/user.service";
-import {Router, ActivatedRoute}                 from "@angular/router";
-import {CaseHomeService}                      from "../services/CaseHomeService";
-import {TreeNode}                             from '../model/TreeNode';
-import {TreeEntity}                           from '../model/TreeEntity';
+import {Component, OnInit, ViewEncapsulation, AfterViewInit} from "@angular/core";
+import {Router, ActivatedRoute} from "@angular/router";
+import {CaseHomeService} from "./home.service";
+import {TreeNode} from "./model/TreeNode";
+import {TreeEntity} from "./model/TreeEntity";
+import {ApiService, commonConfig} from "../../../frameworks";
 
 @Component({
     moduleId: module.id,
@@ -15,7 +11,7 @@ import {TreeEntity}                           from '../model/TreeEntity';
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
 
     leftscroll() {
         var index = $(".active").index();
@@ -47,7 +43,8 @@ export class HomeComponent implements OnInit {
             beforeClick: this.beforeClick,
             beforeCheck: this.beforeCheck,
             onClick: this.onTreeEntity,
-            onCheck: this.onCheck
+            onCheck: this.onCheck,
+            onRightClick: undefined
         },
         async: {
             enable: true,                      //设置启用异步加载
@@ -67,11 +64,13 @@ export class HomeComponent implements OnInit {
 
     //初始化
     ngOnInit() {
-
-        this.route.params.subscribe(params => {
-            this.projectId = params['projectId'];
-            console.log(this.projectId);
-        });
+        console.log("starting init home component!======================")
+        // window.test = this;
+        this.projectId = this.route.snapshot.params['projectId'];
+        // this.route.params.subscribe(params => {
+        //     this.projectId = params['projectId'];
+        //     console.log(this.projectId);
+        // });
 
         //用来操作内容里的东西 不需要
         // $('h2').click(function () {
@@ -82,9 +81,12 @@ export class HomeComponent implements OnInit {
         //     }
         // });
         //树 tree
-        this.initServerTree();
 
         // this.leftscroll();
+    }
+
+    ngAfterViewInit() {
+        this.initServerTree();
     }
 
     initServerTree() {
@@ -92,7 +94,7 @@ export class HomeComponent implements OnInit {
             if (response) {
                 this.tmssServerList = response;
                 console.log(this.tmssServerList);
-                this.produceTmssTree("root",this.fields,this.types,"-1","-1",this.tmssServerList[0].id);
+                this.produceTmssTree("root", this.fields, this.types, "-1", "-1", this.tmssServerList[0].id);
                 // this.produceProjectAssociateTree();
             }
         });
@@ -205,8 +207,53 @@ export class HomeComponent implements OnInit {
         $(".text-down-div").slideToggle();
     }
 
+  onRightClick(event, treeId, treeNode) {
+    let zTree = $.fn.zTree.getZTreeObj("caseTree");
+    console.log(this)
+    var  onBodyMouseDown = function(event){
+      let rMenu = $("#rMenu");
+      if (!(event.target.id == "rMenu" || $(event.target).parents("#rMenu").length>0)) {
+        rMenu.css({"visibility" : "hidden"});
+      }
+    }
 
-    produceTmssTree(uri, fields, types, curPage, pageSize, tmssServerId) {
+    var showRMenu = function(type, x, y) {
+      let rMenu = $("#rMenu");
+
+      $("#rMenu ul").show();
+      if (type=="root") {
+        $("#m_del").hide();
+      } else {
+        $("#m_del").show();
+      }
+      rMenu.css({"top":y+"px", "left":x+"px", "visibility":"visible"});
+
+      $("body").bind("mousedown", onBodyMouseDown);
+    }
+
+
+
+      if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
+        zTree.cancelSelectedNode();
+        showRMenu("root", event.clientX, event.clientY);
+      } else if (treeNode && !treeNode.noR) {
+        zTree.selectNode(treeNode);
+        showRMenu("node", event.clientX, event.clientY);
+      }
+
+
+  }
+
+
+
+//   hideRMenu() {
+//   if (rMenu) rMenu.css({"visibility": "hidden"});
+//   $("body").unbind("mousedown", this.onBodyMouseDown);
+// }
+
+
+
+  produceTmssTree(uri, fields, types, curPage, pageSize, tmssServerId) {
         this.caseHomeService.getTmssTree("root", this.fields, this.types, "-1", "-1", this.tmssServerList[0].id).subscribe(response => {
             if (response.status && response.status === "ok") {
                 let treeNodes = [];
@@ -230,8 +277,8 @@ export class HomeComponent implements OnInit {
                         }
                     }
                 }
-                console.log(treeNodes);
-                this.tree = $.fn.zTree.init($("#caseTree"), this.setting, treeNodes);
+                // console.log(treeNodes);
+                this.generateTreeComponent(treeNodes);
             } else {
                 console.log("failed to get tmss tree~!");
             }
@@ -278,4 +325,45 @@ export class HomeComponent implements OnInit {
     }
 
 
+    private generateTreeComponent(treeNodes: Array<any>) {
+        this.setting.callback.onRightClick = (function(event, treeId, treeNode) {
+            this.rightClickFunc(event, treeId, treeNode);
+        }).bind(this);
+        this.tree = $.fn.zTree.init($("#caseTree"), this.setting, treeNodes);
+    }
+
+    private rightClickFunc(event: any, treeId: any, treeNode: any) {
+        let zTree = $.fn.zTree.getZTreeObj("caseTree");
+        console.log(this)
+        var  onBodyMouseDown = function(event){
+            let rMenu = $("#rMenu");
+            if (!(event.target.id == "rMenu" || $(event.target).parents("#rMenu").length>0)) {
+                rMenu.css({"visibility" : "hidden"});
+            }
+        }
+
+        var showRMenu = function(type, x, y) {
+            let rMenu = $("#rMenu");
+
+            $("#rMenu ul").show();
+            if (type=="root") {
+                $("#m_del").hide();
+            } else {
+                $("#m_del").show();
+            }
+            rMenu.css({"top":y+"px", "left":x+"px", "visibility":"visible"});
+
+            $("body").bind("mousedown", onBodyMouseDown);
+        }
+
+
+
+        if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
+            zTree.cancelSelectedNode();
+            showRMenu("root", event.clientX, event.clientY);
+        } else if (treeNode && !treeNode.noR) {
+            zTree.selectNode(treeNode);
+            showRMenu("node", event.clientX, event.clientY);
+        }
+    }
 }
