@@ -1,0 +1,47 @@
+ip: 10.130.183.100
+
+old platform: 
+http://alpha.tmss.huawei.com/CIDA/
+http://10.93.122.124:8081/CIDA/main.action
+CA: http://rnd-ts.huawei.com/#/4601210d/dashboard
+huawei:
+http://angular.inhuawei.com/
+ng2 huawei framework: clouddragon home
+https://rnd-devcloud.huawei.com/project/8a30e34a1813463a8b6121d9ab28a0a0/home
+ui:
+http://avenueui.alpha.tools.huawei.com/avenueui/v2/doc/inspireui/index.php
+git:
+http://rnd-isourceb.huawei.com/HUTAF-LMT/CIDA_PLATFORM_NG2
+http://rnd-isourceb.huawei.com/HUTAF-LMT/CIDA_APP_TESTCASE
+swagger：http://10.130.183.109:8090/swagger-ui.html#!/
+maven: http://w3cloudnkg-sit1.huawei.com/ccloud/nexus/#welcome
+
+accounts:
+User: yangxin yWX468798 Uh!FwX3Q (yx.yoyo-1989)
+cwx432015  v@abc12345
+gwx445653	Cida_1234/Aa19841108! (guojunlong)
+
+
+todo:
+testcase:
+treenotifier 创建 如果获取了新的树形节点 可以动态放到树里
+
+
+platform:
+2. navigation to platform
+
+后台：
+1. 树接口的重构 （很多接口是复用的 根据业务梳理树形接口类型 删除多余字段）
+
+讨论：
+1. 云龙框架的支持与升级问题
+2. 后端共享session 需要缓存机制与资源
+3. 
+
+testcase:
+1. 增加tab 的功能如何设计
+2. 任务栏 通知系统  如何设计
+3. 模板管理 与 国际化
+
+platform:
+1. 
